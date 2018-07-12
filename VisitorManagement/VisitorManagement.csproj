@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Connection\Connection.cs" />
     <Compile Include="Connection\QueryTable.cs" />
+    <Compile Include="Model\Department.cs" />
     <Compile Include="Model\Room.cs" />
     <Compile Include="Model\Visit.cs" />
     <Compile Include="Model\Visitor.cs" />

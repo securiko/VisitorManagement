@@ -38,10 +38,12 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.register1 = new VisitorManagement.TabView.Register();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -56,7 +58,7 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
             this.panel3.Controls.Add(this.logoutBtn);
             this.panel3.Controls.Add(this.button3);
             this.panel3.Controls.Add(this.button2);
@@ -134,7 +136,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
@@ -152,12 +154,22 @@
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.SkyBlue;
+            this.panel4.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel4.Controls.Add(this.register1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(250, 0);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1003, 578);
             this.panel4.TabIndex = 1;
+            // 
+            // register1
+            // 
+            this.register1.BackColor = System.Drawing.Color.SteelBlue;
+            this.register1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.register1.Location = new System.Drawing.Point(0, 0);
+            this.register1.Name = "register1";
+            this.register1.Size = new System.Drawing.Size(1003, 578);
+            this.register1.TabIndex = 0;
             // 
             // Main
             // 
@@ -173,6 +185,7 @@
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -188,6 +201,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button logoutBtn;
+        private TabView.Register register1;
     }
 }
 

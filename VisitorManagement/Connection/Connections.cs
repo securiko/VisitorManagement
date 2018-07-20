@@ -17,8 +17,8 @@ namespace VisitorManagement.Connection
         public SqlDataReader sqlrd;
         public SqlDataAdapter sqladptr;
         public SqlConnection sqlCon = new SqlConnection();
-        private static Connections connection = new Connections();
         private string serverName, dbName, authUsr, authPwd;
+        private static Connections connection = new Connections();
 
         private Connections() { }
         public static Connections getInstance() {
@@ -46,9 +46,9 @@ namespace VisitorManagement.Connection
                 if (sqlCon.State == ConnectionState.Closed) sqlCon.Open();
             }
 
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Connection must be correct. Please check your connection string",
+                MessageBox.Show("Connection must be correct. Please check your connection string. Error = " + ex.ToString(),
                                 "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

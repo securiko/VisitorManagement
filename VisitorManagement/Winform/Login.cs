@@ -19,9 +19,6 @@ namespace VisitorManagement.Winform
         public Login()
         {
             InitializeComponent();
-
-            // Get instance koneksi
-            connection = Connections.getInstance();
         }
 
         private void menuConn_Click(object sender, EventArgs e)
@@ -42,7 +39,7 @@ namespace VisitorManagement.Winform
             if (MessageBox.Show("Are you sure want to save this Connection?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 // melakukan binding string pada textbox
-                string msg, tittle;
+
                 connection.setConnection(textBox3.Text, textBox4.Text, textBox5.Text, textBox6.Text);
                 Properties.Settings.Default.sqlName = textBox3.Text;
                 Properties.Settings.Default.dbName = textBox4.Text;
@@ -50,10 +47,8 @@ namespace VisitorManagement.Winform
                 Properties.Settings.Default.password = textBox6.Text;
                 Properties.Settings.Default.Save();
 
-                msg = "Save Successfully";
-                tittle = "Information";
                 MessageBoxButtons button = MessageBoxButtons.OK;
-                DialogResult result = MessageBox.Show(msg, tittle, button, MessageBoxIcon.Information);
+                DialogResult result = MessageBox.Show("Save Successfully", "Information", button, MessageBoxIcon.Information);
             }
         }
 
@@ -61,6 +56,9 @@ namespace VisitorManagement.Winform
         {
             // melakukan pengecekkan apakan identitas untuk koneksi ke database telah terisi
             // jika telah terisi melakukan set koneksi ke class Connections
+
+            // Get instance koneksi
+            connection = Connections.getInstance();
             if (Properties.Settings.Default.sqlName != "" || Properties.Settings.Default.dbName != "" ||
                 Properties.Settings.Default.userName != "" || Properties.Settings.Default.password != "")
             {
@@ -80,9 +78,8 @@ namespace VisitorManagement.Winform
             // cek jika telah terbuka
             if (connection.sqlCon.State == ConnectionState.Open)
             {
-                MessageBoxButtons button = MessageBoxButtons.OK;
-                DialogResult result = MessageBox.Show("Connected to Access Control DB", 
-                                        "Information", button, MessageBoxIcon.Information);
+                MessageBox.Show("Connected to Access Control DB", 
+                                        "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 connection.sqlCon.Close();
             }
 

@@ -20,14 +20,18 @@ namespace VisitorManagement.Winform
 
         private void Main_Load(object sender, EventArgs e)
         {
-            login = new Login();
-            
+            login = new Login(); 
         }
 
         private void logoutBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
             login.Show();
+        }
+
+        private void Main_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("dasd");
         }
     }
 }

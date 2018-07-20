@@ -45,17 +45,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connection\Connection.cs" />
+    <Compile Include="Connection\Connections.cs" />
     <Compile Include="Connection\QueryTable.cs" />
     <Compile Include="Model\Department.cs" />
     <Compile Include="Model\Room.cs" />
     <Compile Include="Model\Visit.cs" />
     <Compile Include="Model\Visitor.cs" />
+    <Compile Include="TabView\Checkout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TabView\Checkout.Designer.cs">
+      <DependentUpon>Checkout.cs</DependentUpon>
+    </Compile>
     <Compile Include="TabView\Register.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="TabView\Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Winform\DepartmentList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Winform\DepartmentList.Designer.cs">
+      <DependentUpon>DepartmentList.cs</DependentUpon>
     </Compile>
     <Compile Include="Winform\Login.cs">
       <SubType>Form</SubType>
@@ -80,8 +92,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="TabView\Checkout.resx">
+      <DependentUpon>Checkout.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TabView\Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Winform\DepartmentList.resx">
+      <DependentUpon>DepartmentList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Winform\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

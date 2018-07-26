@@ -22,9 +22,14 @@ namespace VisitorManagement.Winform
             this.register = register;
         }
 
+        private void clear()
+        {
+            textBox1.Text = "";
+            textBox2.Text = "";
+        }
         private void displayDGV()
         {
-            string query = "select * from TDepartment";
+            string query = "select * from TDepartment order by DeptName";
             connections.displayDB(query, "DepartmentID");
             dataGridView1.DataSource = connections.sql_d_set;
             dataGridView1.DataMember = "DepartmentID";
@@ -56,9 +61,7 @@ namespace VisitorManagement.Winform
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            register.departID = dataGridView1.CurrentRow.Cells[0].Value + string.Empty;
-            register.textBox3.Text = dataGridView1.CurrentRow.Cells[1].Value + string.Empty;
-            this.Close();
+            
         }
 
         private void saveBtn_Click(object sender, EventArgs e)
@@ -74,8 +77,16 @@ namespace VisitorManagement.Winform
                     connections.insertSQL(query);
                     MessageBox.Show("Department added", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     displayDGV();
+                    clear();
                 }
             }
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            register.departID = dataGridView1.CurrentRow.Cells[0].Value + string.Empty;
+            register.textBox3.Text = dataGridView1.CurrentRow.Cells[1].Value + string.Empty;
+            this.Close();
         }
     }
 }

@@ -39,6 +39,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.register1 = new VisitorManagement.TabView.Register();
+            this.checkout1 = new VisitorManagement.TabView.Checkout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -117,6 +118,7 @@
             this.button2.Text = "                      Checkout";
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -133,6 +135,7 @@
             this.button1.Text = "                      Checkin";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel2
             // 
@@ -155,6 +158,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel4.Controls.Add(this.checkout1);
             this.panel4.Controls.Add(this.register1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(250, 0);
@@ -170,6 +174,15 @@
             this.register1.Name = "register1";
             this.register1.Size = new System.Drawing.Size(1003, 578);
             this.register1.TabIndex = 0;
+            // 
+            // checkout1
+            // 
+            this.checkout1.BackColor = System.Drawing.Color.SteelBlue;
+            this.checkout1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkout1.Location = new System.Drawing.Point(0, 0);
+            this.checkout1.Name = "checkout1";
+            this.checkout1.Size = new System.Drawing.Size(1003, 578);
+            this.checkout1.TabIndex = 1;
             // 
             // Main
             // 
@@ -202,6 +215,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button logoutBtn;
         private TabView.Register register1;
+        private TabView.Checkout checkout1;
     }
 }
 

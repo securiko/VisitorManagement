@@ -1,28 +1,108 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using VisitorManagement.Connection;
 
 namespace VisitorManagement.Model
 {
     public class Visitor
     {
-        private string id, name, birth, phone, address;
+        Connections connections;
+        private string visitorID, name, gender, address, phone, photo;
 
-        public Visitor(string id, string name, string birth, string phone, string address)
+        public Visitor()
         {
-            this.Id = id;
-            this.Name = name;
-            this.Birth = birth;
-            this.Phone = phone;
-            this.Address = address;
+            connections = Connections.getInstance();
         }
 
-        public string Id { get => id; set => id = value; }
+        public Visitor(string name, string gender, string address, string phone)
+        {
+            this.name = name;
+            this.phone = phone;
+            this.gender = gender;
+            this.address = address;
+            connections = Connections.getInstance();
+        }
+
+        public Visitor(string visitorID, string name, string gender, string address, string phone)
+        {
+            this.phone = phone;
+            this.name = name;
+            this.gender = gender;
+            this.address = address;
+            this.visitorID = visitorID;
+            connections = Connections.getInstance();
+        }
+
+        public string VisitorID { get => visitorID; set => visitorID = value; }
         public string Name { get => name; set => name = value; }
-        public string Birth { get => birth; set => birth = value; }
-        public string Phone { get => phone; set => phone = value; }
+        public string Gender { get => gender; set => gender = value; }
         public string Address { get => address; set => address = value; }
+        public string Phone { get => phone; set => phone = value; }
+        public string Photo { get => photo; set => photo = value; }
+
+        public void insert()
+        {
+            string query = "insert into TVisitor (VisitorID, Name, Gender, Address, Phone) values " +
+                        "('" + visitorID + "','" + name + "','" + gender + "'" +
+                        ",'" + address + "','" + phone + "')";
+            try
+            {
+                connections.insertSQL(query);
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+             
+        }
+
+        public void update()
+        {
+            string query = "update TVisitor set Name = '" + name + "'," +
+                " Gender = '" + gender + "'," +
+                " Address = '" + address + "'," +
+                " Phone = '" + phone + "' " +
+                "where visitorID = '" + visitorID + "'";
+            try
+            {
+                connections.insertSQL(query);
+            } catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void getData(string query)
+        {
+            try
+            {
+                connections.opensql();
+
+                connections.sqlcmd = new SqlCommand(query, connections.sqlCon);
+                connections.sqlcmd.CommandType = CommandType.Text;
+                connections.sqlrd = connections.sqlcmd.ExecuteReader();
+                while (connections.sqlrd.Read())
+                {
+                    name = connections.sqlrd["Name"].ToString();
+                    gender = connections.sqlrd["Gender"].ToString();
+                    address = connections.sqlrd["Address"].ToString();
+                    phone = connections.sqlrd["Phone"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                connections.sqlrd.Close();
+                connections.sqlCon.Close();
+            }
+        }
     }
 }

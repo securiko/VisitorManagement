@@ -276,8 +276,10 @@
             // 
             // gender
             // 
+            this.gender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.gender.FormattingEnabled = true;
             this.gender.Items.AddRange(new object[] {
+            "            ---------- Selected Gender ----------",
             "M",
             "F"});
             this.gender.Location = new System.Drawing.Point(130, 96);
@@ -381,6 +383,9 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.dataGridView1);
             this.groupBox2.ForeColor = System.Drawing.Color.Black;
             this.groupBox2.Location = new System.Drawing.Point(6, 170);

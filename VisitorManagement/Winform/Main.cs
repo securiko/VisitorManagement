@@ -20,7 +20,9 @@ namespace VisitorManagement.Winform
 
         private void Main_Load(object sender, EventArgs e)
         {
-            login = new Login(); 
+            login = new Login();
+            this.CenterToScreen();
+            register1.BringToFront();
         }
 
         private void logoutBtn_Click(object sender, EventArgs e)
@@ -29,9 +31,14 @@ namespace VisitorManagement.Winform
             login.Show();
         }
 
-        private void Main_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("dasd");
+            register1.BringToFront();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            checkout1.BringToFront();
         }
     }
 }

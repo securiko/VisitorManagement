@@ -19,14 +19,15 @@ namespace VisitorManagement.Connection
                             "Photo NVARCHAR(50) default 'No Photo'); ";
 
         public static string department = "CREATE TABLE TDepartment ( " +
-                            "DepartmentID INT NOT NULL PRIMARY KEY IDENTITY(1, 1), " +
+                            "DepartmentID INT NOT NULL PRIMARY KEY, " +
                             "DeptName NVARCHAR(50));";
 
         public static string visiting = "CREATE TABLE TVisiting ( " +
-                            "VisitID INT NOT NULL PRIMARY KEY" +
+                            "VisitID INT NOT NULL PRIMARY KEY IDENTITY(1, 1)," +
                             "VisitorID NVARCHAR(50) NOT NULL FOREIGN KEY REFERENCES TVisitor(VisitorID)," +
                             "DepartmentID INT NOT NULL FOREIGN KEY REFERENCES TDepartment(DepartmentID)," +
                             "DoorID INT NOT NULL FOREIGN KEY REFERENCES TDoor(DoorID)," +
+                            "CardNumber NVARCHAR(50)," +
                             "DateIn date NOT NULL," +
                             "TimeIn time(7)," +
                             "CheckinStatus NCHAR(3), " +
@@ -37,11 +38,14 @@ namespace VisitorManagement.Connection
                             "TVisiting.VisitID, " +
                             "TVisitor.Name, " +
                             "TDepartment.DeptName, " +
-                            "TDoor.DoorID, " +
+                            "TDoor.DoorName, " +
+                            "TVisiting.CardNumber, " +
                             "TVisiting.DateIn, " +
                             "TVisiting.TimeIn, " +
+                            "TVisiting.CheckinStatus, " +
                             "TVisiting.DateOut, " +
-                            "TVisiting.TimeOut " +
+                            "TVisiting.TimeOut, " +
+                            "TVisiting.CheckoutStatus " +
                             "from TVisiting " +
                             "inner join TVisitor on TVisiting.VisitorID = TVisitor.VisitorID " +
                             "inner join TDepartment on TVisiting.DepartmentID = TDepartment.DepartmentID " +

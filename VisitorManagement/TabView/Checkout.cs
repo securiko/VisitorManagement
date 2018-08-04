@@ -124,6 +124,7 @@ namespace VisitorManagement.TabView
                         visit.update();
                         update = false;
                         MessageBox.Show("Checkout visitor done", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        displayDGVToday();
                     }
                     else
                     {

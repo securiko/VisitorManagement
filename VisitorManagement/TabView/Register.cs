@@ -17,9 +17,9 @@ namespace VisitorManagement.TabView
     public partial class Register : UserControl
     {
         Connections connections;
-        public string departID;
+        public string companyID;
         Room room;
-        DepartmentList departmentList;
+        CompanyList companytList;
         public Register()
         {
             InitializeComponent();
@@ -78,18 +78,44 @@ namespace VisitorManagement.TabView
             dataGridView1.DataMember = "VisitID";
         }
 
+        private void search(string text, int index)
+        {
+            string today = DateTime.Now.ToString("yyyy-MM-dd");
+            string query = "";
+
+            switch (index)
+            {
+                case 0:
+                    query = "select * from Vvisiting where DateIn = '" + today + "' and Name Like '%" + text + "%'";
+                    connections.displayDB(query, "VisitID");
+                    dataGridView1.DataSource = connections.sql_d_set;
+                    dataGridView1.DataMember = "VisitID";
+                    break;
+
+                case 1:
+                    query = query = "select * from Vvisiting where DateIn = '" + today + "' and CardNumber Like '%" + text + "%'";
+                    connections.displayDB(query, "VisitID");
+                    dataGridView1.DataSource = connections.sql_d_set;
+                    dataGridView1.DataMember = "VisitID";
+                    break;
+                default:
+                    break;
+            }
+        }
+
         private void Register_Load(object sender, EventArgs e)
         {
             connections = Connections.getInstance();
             gender.SelectedIndex = 0;
+            comboBox2.SelectedIndex = 0;
             fill_tree();
             displayDGV();
         }
 
-        private void departBtn_Click(object sender, EventArgs e)
+        private void companyBtn_Click(object sender, EventArgs e)
         {
-            departmentList = new DepartmentList(this);
-            departmentList.Show();
+            companytList = new CompanyList(this);
+            companytList.Show();
         }
 
         private void saveBtn_Click(object sender, EventArgs e)
@@ -149,7 +175,7 @@ namespace VisitorManagement.TabView
                 if (count == 0) MessageBox.Show("Please select room", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 else
                 {
-                    Visit visit = new Visit(textBox1.Text, departID, tempDoorID, cardNo, dateIn, DateTime.Now.ToString("HH:mm"), "Yes", dateOut);
+                    Visit visit = new Visit(textBox1.Text, companyID, tempDoorID, cardNo, dateIn, DateTime.Now.ToString("HH:mm"), "Yes", dateOut);
                     visit.insert();
                     clear();
                     MessageBox.Show("Visitor added", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -161,6 +187,11 @@ namespace VisitorManagement.TabView
         private void cancelBtn_Click(object sender, EventArgs e)
         {
             clear();
+        }
+
+        private void filterTxt_TextChanged(object sender, EventArgs e)
+        {
+            search(filterTxt.Text, comboBox2.SelectedIndex);
         }
     }
 }

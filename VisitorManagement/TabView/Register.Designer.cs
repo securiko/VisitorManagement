@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Register));
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.departBtn = new System.Windows.Forms.Button();
+            this.companyBtn = new System.Windows.Forms.Button();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.cancelBtn = new System.Windows.Forms.Button();
@@ -56,7 +56,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.filterTxt = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -82,7 +82,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.departBtn);
+            this.groupBox1.Controls.Add(this.companyBtn);
             this.groupBox1.Controls.Add(this.textBox5);
             this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Controls.Add(this.cancelBtn);
@@ -112,17 +112,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Register";
             // 
-            // departBtn
+            // companyBtn
             // 
-            this.departBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.departBtn.ForeColor = System.Drawing.Color.White;
-            this.departBtn.Location = new System.Drawing.Point(340, 126);
-            this.departBtn.Name = "departBtn";
-            this.departBtn.Size = new System.Drawing.Size(72, 23);
-            this.departBtn.TabIndex = 23;
-            this.departBtn.Text = "Find Depart";
-            this.departBtn.UseVisualStyleBackColor = true;
-            this.departBtn.Click += new System.EventHandler(this.departBtn_Click);
+            this.companyBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.companyBtn.ForeColor = System.Drawing.Color.White;
+            this.companyBtn.Location = new System.Drawing.Point(340, 126);
+            this.companyBtn.Name = "companyBtn";
+            this.companyBtn.Size = new System.Drawing.Size(72, 23);
+            this.companyBtn.TabIndex = 23;
+            this.companyBtn.Text = "Find Depart";
+            this.companyBtn.UseVisualStyleBackColor = true;
+            this.companyBtn.Click += new System.EventHandler(this.companyBtn_Click);
             // 
             // textBox5
             // 
@@ -279,7 +279,7 @@
             this.gender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.gender.FormattingEnabled = true;
             this.gender.Items.AddRange(new object[] {
-            "            ---------- Selected Gender ----------",
+            "                       ---------- Selected Gender ----------",
             "M",
             "F"});
             this.gender.Location = new System.Drawing.Point(130, 96);
@@ -335,7 +335,7 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.comboBox2);
-            this.groupBox3.Controls.Add(this.textBox6);
+            this.groupBox3.Controls.Add(this.filterTxt);
             this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.ForeColor = System.Drawing.Color.White;
@@ -348,18 +348,23 @@
             // 
             // comboBox2
             // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "Name",
+            "Card Number"});
             this.comboBox2.Location = new System.Drawing.Point(133, 32);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(232, 21);
             this.comboBox2.TabIndex = 4;
             // 
-            // textBox6
+            // filterTxt
             // 
-            this.textBox6.Location = new System.Drawing.Point(133, 64);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(232, 20);
-            this.textBox6.TabIndex = 3;
+            this.filterTxt.Location = new System.Drawing.Point(133, 64);
+            this.filterTxt.Name = "filterTxt";
+            this.filterTxt.Size = new System.Drawing.Size(232, 20);
+            this.filterTxt.TabIndex = 3;
+            this.filterTxt.TextChanged += new System.EventHandler(this.filterTxt_TextChanged);
             // 
             // label11
             // 
@@ -388,9 +393,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.dataGridView1);
             this.groupBox2.ForeColor = System.Drawing.Color.Black;
-            this.groupBox2.Location = new System.Drawing.Point(6, 170);
+            this.groupBox2.Location = new System.Drawing.Point(6, 162);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(517, 393);
+            this.groupBox2.Size = new System.Drawing.Size(517, 401);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             // 
@@ -401,7 +406,7 @@
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 16);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(511, 374);
+            this.dataGridView1.Size = new System.Drawing.Size(511, 382);
             this.dataGridView1.TabIndex = 0;
             // 
             // Register
@@ -454,12 +459,12 @@
         private System.Windows.Forms.Button cancelBtn;
         private System.Windows.Forms.Button saveBtn;
         private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox filterTxt;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button departBtn;
+        private System.Windows.Forms.Button companyBtn;
         public System.Windows.Forms.TextBox textBox3;
     }
 }

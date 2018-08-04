@@ -47,7 +47,7 @@
   <ItemGroup>
     <Compile Include="Connection\Connections.cs" />
     <Compile Include="Connection\QueryTable.cs" />
-    <Compile Include="Model\Department.cs" />
+    <Compile Include="Model\Company.cs" />
     <Compile Include="Model\Room.cs" />
     <Compile Include="Model\Visit.cs" />
     <Compile Include="Model\Visitor.cs" />
@@ -69,11 +69,11 @@
     <Compile Include="TabView\Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
-    <Compile Include="Winform\DepartmentList.cs">
+    <Compile Include="Winform\CompanyList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Winform\DepartmentList.Designer.cs">
-      <DependentUpon>DepartmentList.cs</DependentUpon>
+    <Compile Include="Winform\CompanyList.Designer.cs">
+      <DependentUpon>CompanyList.cs</DependentUpon>
     </Compile>
     <Compile Include="Winform\Login.cs">
       <SubType>Form</SubType>
@@ -107,8 +107,8 @@
     <EmbeddedResource Include="TabView\Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Winform\DepartmentList.resx">
-      <DependentUpon>DepartmentList.cs</DependentUpon>
+    <EmbeddedResource Include="Winform\CompanyList.resx">
+      <DependentUpon>CompanyList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Winform\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

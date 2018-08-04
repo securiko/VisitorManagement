@@ -143,9 +143,6 @@ namespace VisitorManagement.Winform
                 connection.sqlcmd = new SqlCommand(QueryTable.visitor, connection.sqlCon);
                 connection.sqlcmd.ExecuteNonQuery();
 
-                connection.sqlcmd = new SqlCommand(QueryTable.department, connection.sqlCon);
-                connection.sqlcmd.ExecuteNonQuery();
-
                 connection.sqlcmd = new SqlCommand(QueryTable.visiting, connection.sqlCon);
                 connection.sqlcmd.ExecuteNonQuery();
 

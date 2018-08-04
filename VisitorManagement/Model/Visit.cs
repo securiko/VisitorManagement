@@ -11,7 +11,7 @@ namespace VisitorManagement.Model
     public class Visit
     {
         Connections connections;
-        private string visitorID, departmentID, doorID, cardNumber, dateIn, timeIn, checkinStatus, dateOut, timeOut, checkoutStatus;
+        private string visitorID, companyID, doorID, cardNumber, dateIn, timeIn, checkinStatus, dateOut, timeOut, checkoutStatus;
 
         public Visit(string dateIn, string timeIn, string timeOut)
         {
@@ -21,10 +21,10 @@ namespace VisitorManagement.Model
             connections = Connections.getInstance();
         }
 
-        public Visit(string visitorID, string departmentID, string doorID, string cardNumber, string dateIn, string timeIn, string checkinStatus, string dateOut)
+        public Visit(string visitorID, string companyID, string doorID, string cardNumber, string dateIn, string timeIn, string checkinStatus, string dateOut)
         {
             this.visitorID = visitorID;
-            this.departmentID = departmentID;
+            this.companyID = companyID;
             this.doorID = doorID;
             this.dateIn = dateIn;
             this.timeIn = timeIn;
@@ -35,21 +35,21 @@ namespace VisitorManagement.Model
         }
 
         public string VisitorID { get => visitorID; set => visitorID = value; }
-        public string DepartmentID { get => departmentID; set => departmentID = value; }
+        public string CompanyID { get => companyID; set => companyID = value; }
         public string DoorID { get => doorID; set => doorID = value; }
+        public string CardNumber { get => cardNumber; set => cardNumber = value; }
         public string DateIn { get => dateIn; set => dateIn = value; }
         public string TimeIn { get => timeIn; set => timeIn = value; }
         public string CheckinStatus { get => checkinStatus; set => checkinStatus = value; }
         public string DateOut { get => dateOut; set => dateOut = value; }
         public string TimeOut { get => timeOut; set => timeOut = value; }
         public string CheckoutStatus { get => checkoutStatus; set => checkoutStatus = value; }
-        public string CardNumber { get => cardNumber; set => cardNumber = value; }
 
         public void insert()
         {
-            string query = "insert into TVIsiting (VisitorID, DepartmentID, DoorID, CardNumber, DateIn, TimeIn, CheckinStatus, DateOut, TimeOut, CheckoutStatus)" +
+            string query = "insert into TVIsiting (VisitorID, CompanyID, DoorID, CardNumber, DateIn, TimeIn, CheckinStatus, DateOut, TimeOut, CheckoutStatus)" +
                        "values ('" + visitorID + "'," +
-                       "'" + departmentID + "'," +
+                       "'" + companyID + "'," +
                        "'" + doorID + "'," +
                        "'" + cardNumber + "'," +
                        "'" + dateIn + "'," +

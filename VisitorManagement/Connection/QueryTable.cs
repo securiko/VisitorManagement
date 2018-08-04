@@ -18,14 +18,10 @@ namespace VisitorManagement.Connection
                             "Phone NVARCHAR(50)," +
                             "Photo NVARCHAR(50) default 'No Photo'); ";
 
-        public static string department = "CREATE TABLE TDepartment ( " +
-                            "DepartmentID INT NOT NULL PRIMARY KEY, " +
-                            "DeptName NVARCHAR(50));";
-
         public static string visiting = "CREATE TABLE TVisiting ( " +
                             "VisitID INT NOT NULL PRIMARY KEY IDENTITY(1, 1)," +
                             "VisitorID NVARCHAR(50) NOT NULL FOREIGN KEY REFERENCES TVisitor(VisitorID)," +
-                            "DepartmentID INT NOT NULL FOREIGN KEY REFERENCES TDepartment(DepartmentID)," +
+                            "CompanyID tinyint," +
                             "DoorID INT NOT NULL FOREIGN KEY REFERENCES TDoor(DoorID)," +
                             "CardNumber NVARCHAR(50)," +
                             "DateIn date NOT NULL," +
@@ -34,10 +30,11 @@ namespace VisitorManagement.Connection
                             "DateOut date NOT NULL," +
                             "TimeOut time(7)," +
                             "CheckoutStatus NCHAR(3)); ";
+
         public static string view_visiting = "CREATE VIEW Vvisiting AS select " +
                             "TVisiting.VisitID, " +
                             "TVisitor.Name, " +
-                            "TDepartment.DeptName, " +
+                            "TCompany.CompName, " +
                             "TDoor.DoorName, " +
                             "TVisiting.CardNumber, " +
                             "TVisiting.DateIn, " +
@@ -48,7 +45,7 @@ namespace VisitorManagement.Connection
                             "TVisiting.CheckoutStatus " +
                             "from TVisiting " +
                             "inner join TVisitor on TVisiting.VisitorID = TVisitor.VisitorID " +
-                            "inner join TDepartment on TVisiting.DepartmentID = TDepartment.DepartmentID " +
+                            "inner join TCompany on TVisiting.CompanyID = TCompany.CompanyID " +
                             "inner join TDoor on TVisiting.DoorID = TDoor.DoorID;";
     }
 }

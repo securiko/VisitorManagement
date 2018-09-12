@@ -105,11 +105,11 @@ namespace VisitorManagement.TabView
 
         private void Register_Load(object sender, EventArgs e)
         {
-            connections = Connections.getInstance();
-            gender.SelectedIndex = 0;
-            comboBox2.SelectedIndex = 0;
-            fill_tree();
-            displayDGV();
+            //connections = Connections.getInstance();
+            //gender.SelectedIndex = 0;
+            //comboBox2.SelectedIndex = 0;
+            //fill_tree();
+            //displayDGV();
         }
 
         private void companyBtn_Click(object sender, EventArgs e)

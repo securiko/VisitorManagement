@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace VisitorManagement.TabView
 {
-    public partial class History : UserControl
+    public partial class Report : UserControl
     {
-        public History()
+        public Report()
         {
             InitializeComponent();
         }

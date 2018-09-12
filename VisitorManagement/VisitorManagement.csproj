@@ -57,11 +57,11 @@
     <Compile Include="TabView\Checkout.Designer.cs">
       <DependentUpon>Checkout.cs</DependentUpon>
     </Compile>
-    <Compile Include="TabView\History.cs">
+    <Compile Include="TabView\Report.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="TabView\History.Designer.cs">
-      <DependentUpon>History.cs</DependentUpon>
+    <Compile Include="TabView\Report.Designer.cs">
+      <DependentUpon>Report.cs</DependentUpon>
     </Compile>
     <Compile Include="TabView\Register.cs">
       <SubType>UserControl</SubType>
@@ -101,8 +101,8 @@
     <EmbeddedResource Include="TabView\Checkout.resx">
       <DependentUpon>Checkout.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TabView\History.resx">
-      <DependentUpon>History.cs</DependentUpon>
+    <EmbeddedResource Include="TabView\Report.resx">
+      <DependentUpon>Report.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TabView\Register.resx">
       <DependentUpon>Register.cs</DependentUpon>

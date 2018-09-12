@@ -72,7 +72,7 @@ namespace VisitorManagement.TabView
         private void displayDGV()
         {
             string today = DateTime.Now.ToString("yyyy-MM-dd");
-            string query = "select * from Vvisiting where DateIn = '"+today+"'";
+            string query = QueryTable.viewVisiting + " where DateIn = '"+today+"'";
             connections.displayDB(query, "VisitID");
             dataGridView1.DataSource = connections.sql_d_set;
             dataGridView1.DataMember = "VisitID";
@@ -86,14 +86,14 @@ namespace VisitorManagement.TabView
             switch (index)
             {
                 case 0:
-                    query = "select * from Vvisiting where DateIn = '" + today + "' and Name Like '%" + text + "%'";
+                    query = QueryTable.viewVisiting + " where DateIn = '" + today + "' and Name Like '%" + text + "%'";
                     connections.displayDB(query, "VisitID");
                     dataGridView1.DataSource = connections.sql_d_set;
                     dataGridView1.DataMember = "VisitID";
                     break;
 
                 case 1:
-                    query = query = "select * from Vvisiting where DateIn = '" + today + "' and CardNumber Like '%" + text + "%'";
+                    query = query = QueryTable.viewVisiting + " where DateIn = '" + today + "' and CardNumber Like '%" + text + "%'";
                     connections.displayDB(query, "VisitID");
                     dataGridView1.DataSource = connections.sql_d_set;
                     dataGridView1.DataMember = "VisitID";
@@ -175,7 +175,7 @@ namespace VisitorManagement.TabView
                 if (count == 0) MessageBox.Show("Please select room", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 else
                 {
-                    Visit visit = new Visit(textBox1.Text, companyID, tempDoorID, cardNo, dateIn, DateTime.Now.ToString("HH:mm"), "Yes", dateOut);
+                    Visit visit = new Visit(textBox1.Text, companyID, tempDoorID, cardNo, dateIn, DateTime.Now.ToString("HH:mm"), "Yes");
                     visit.insert();
                     clear();
                     MessageBox.Show("Visitor added", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -44,7 +44,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.filterTxt = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.queryBtn = new System.Windows.Forms.Button();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
@@ -220,7 +220,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.textBox5);
+            this.groupBox3.Controls.Add(this.filterTxt);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.queryBtn);
             this.groupBox3.Controls.Add(this.dateTimePicker2);
@@ -237,12 +237,12 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Filter";
             // 
-            // textBox5
+            // filterTxt
             // 
-            this.textBox5.Location = new System.Drawing.Point(130, 127);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(282, 20);
-            this.textBox5.TabIndex = 23;
+            this.filterTxt.Location = new System.Drawing.Point(130, 127);
+            this.filterTxt.Name = "filterTxt";
+            this.filterTxt.Size = new System.Drawing.Size(282, 20);
+            this.filterTxt.TabIndex = 23;
             // 
             // label9
             // 
@@ -372,6 +372,6 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button queryBtn;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox filterTxt;
     }
 }

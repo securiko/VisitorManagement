@@ -14,7 +14,7 @@ namespace VisitorManagement.Winform
 {
     public partial class CompanyList : Form
     {
-        bool editStatus = false;
+        //bool editStatus = false;
         Connections connections;
         Register register;
         public CompanyList(Register register)

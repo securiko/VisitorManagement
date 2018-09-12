@@ -24,14 +24,14 @@ namespace VisitorManagement.Connection
                             "CompanyID tinyint," +
                             "DoorID INT NOT NULL FOREIGN KEY REFERENCES TDoor(DoorID)," +
                             "CardNumber NVARCHAR(50)," +
-                            "DateIn date NOT NULL," +
+                            "DateIn date ," +
                             "TimeIn time(7)," +
                             "CheckinStatus NCHAR(3), " +
-                            "DateOut date NOT NULL," +
+                            "DateOut date ," +
                             "TimeOut time(7)," +
                             "CheckoutStatus NCHAR(3)); ";
 
-        public static string view_visiting = "CREATE VIEW Vvisiting AS select " +
+        public static string createViewVisiting = "CREATE VIEW Vvisiting AS select " +
                             "TVisiting.VisitID, " +
                             "TVisitor.Name, " +
                             "TCompany.CompName, " +
@@ -47,5 +47,16 @@ namespace VisitorManagement.Connection
                             "inner join TVisitor on TVisiting.VisitorID = TVisitor.VisitorID " +
                             "inner join TCompany on TVisiting.CompanyID = TCompany.CompanyID " +
                             "inner join TDoor on TVisiting.DoorID = TDoor.DoorID;";
+
+        public static string viewVisiting = "select VisitID as 'Visit ID', Name," +
+                " CompName as 'Company Name'," +
+                " DoorName as 'Door'," +
+                " CardNumber as 'Card Number'," +
+                " DateIn as 'Date In'," +
+                " TimeIn as 'In Time'," +
+                " CheckinStatus as 'Check in Status'," +
+                " DateOut as 'Date Out'," +
+                " TimeOut as 'Out Time'," +
+                " CheckoutStatus as 'Check out Status' from Vvisiting ";
     }
 }

@@ -146,7 +146,7 @@ namespace VisitorManagement.Winform
                 connection.sqlcmd = new SqlCommand(QueryTable.visiting, connection.sqlCon);
                 connection.sqlcmd.ExecuteNonQuery();
 
-                connection.sqlcmd = new SqlCommand(QueryTable.view_visiting, connection.sqlCon);
+                connection.sqlcmd = new SqlCommand(QueryTable.createViewVisiting, connection.sqlCon);
                 connection.sqlcmd.ExecuteNonQuery();
 
                 MessageBox.Show("Create table successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);

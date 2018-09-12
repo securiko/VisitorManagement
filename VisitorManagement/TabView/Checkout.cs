@@ -26,7 +26,7 @@ namespace VisitorManagement.TabView
         private void displayDGVToday()
         {
             string today = DateTime.Now.ToString("yyyy-MM-dd");
-            string query = "select * from Vvisiting where DateIn = '" + today + "'";
+            string query = QueryTable.viewVisiting + " where 'Date In' = '" + today + "'";
             connections.displayDB(query, "VisitID");
             dataGridView1.DataSource = connections.sql_d_set;
             dataGridView1.DataMember = "VisitID";
@@ -34,7 +34,7 @@ namespace VisitorManagement.TabView
 
         private void displayDGVFilter(string dateFrom, string dateTo)
         {
-            string query = "select * from Vvisiting where DateIn between '"+dateFrom+"' and '"+dateTo+"'";
+            string query = QueryTable.viewVisiting + " where DateIn between '"+dateFrom+"' and '"+dateTo+"'";
             connections.displayDB(query, "VisitID");
             dataGridView1.DataSource = connections.sql_d_set;
             dataGridView1.DataMember = "VisitID";
@@ -112,15 +112,17 @@ namespace VisitorManagement.TabView
 
         private void updateBtn_Click(object sender, EventArgs e)
         {
-            string timeOut;
+            string timeOut = "";
+            string dateOut = "";
             if (update == true)
             {
                 if (MessageBox.Show("Are you sure want to checkout this visitor?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     if (status.Equals("Yes"))
                     {
+                        dateOut = DateTime.Now.ToString("yyyy-MM-dd");
                         timeOut = DateTime.Now.ToString("HH:mm");
-                        visit = new Visit(dateIn, timeIn, timeOut);
+                        visit = new Visit(dateIn, timeIn, dateOut, timeOut);
                         visit.update();
                         update = false;
                         MessageBox.Show("Checkout visitor done", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);

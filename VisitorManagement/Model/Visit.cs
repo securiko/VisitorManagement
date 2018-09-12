@@ -13,15 +13,16 @@ namespace VisitorManagement.Model
         Connections connections;
         private string visitorID, companyID, doorID, cardNumber, dateIn, timeIn, checkinStatus, dateOut, timeOut, checkoutStatus;
 
-        public Visit(string dateIn, string timeIn, string timeOut)
+        public Visit(string dateIn, string timeIn, string dateOut , string timeOut)
         {
             this.dateIn = dateIn;
             this.timeIn = timeIn;
+            this.dateOut = dateOut;
             this.timeOut = timeOut;
             connections = Connections.getInstance();
         }
 
-        public Visit(string visitorID, string companyID, string doorID, string cardNumber, string dateIn, string timeIn, string checkinStatus, string dateOut)
+        public Visit(string visitorID, string companyID, string doorID, string cardNumber, string dateIn, string timeIn, string checkinStatus)
         {
             this.visitorID = visitorID;
             this.companyID = companyID;
@@ -30,7 +31,6 @@ namespace VisitorManagement.Model
             this.timeIn = timeIn;
             this.cardNumber = cardNumber;
             this.checkinStatus = checkinStatus;
-            this.dateOut = dateOut;
             connections = Connections.getInstance();
         }
 
@@ -47,14 +47,14 @@ namespace VisitorManagement.Model
 
         public void insert()
         {
-            string query = "insert into TVIsiting (VisitorID, CompanyID, DoorID, CardNumber, DateIn, TimeIn, CheckinStatus, DateOut, TimeOut, CheckoutStatus)" +
+            string query = "insert into TVIsiting (VisitorID, CompanyID, DoorID, CardNumber, DateIn, TimeIn, CheckinStatus)" +
                        "values ('" + visitorID + "'," +
                        "'" + companyID + "'," +
                        "'" + doorID + "'," +
                        "'" + cardNumber + "'," +
                        "'" + dateIn + "'," +
                        "'" + timeIn + "'," +
-                       "'Yes','" + dateOut + "','','')";
+                       "'Yes')";
             try
             {
                 connections.insertSQL(query);
@@ -66,7 +66,7 @@ namespace VisitorManagement.Model
 
         public void update()
         {
-            string query = "update TVisiting set CheckoutStatus = 'Yes', timeOut = '"+ timeOut +"' where DateIn = '"+ dateIn +"' and TimeIn = '"+ timeIn +"'";
+            string query = "update TVisiting set DateOut = '"+ dateOut +"', timeOut = '"+ timeOut + "', CheckoutStatus = 'Yes' where DateIn = '" + dateIn +"' and TimeIn = '"+ timeIn +"'";
             try
             {
                 connections.insertSQL(query);

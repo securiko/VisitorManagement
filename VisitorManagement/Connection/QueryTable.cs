@@ -33,6 +33,7 @@ namespace VisitorManagement.Connection
 
         public static string createViewVisiting = "CREATE VIEW Vvisiting AS select " +
                             "TVisiting.VisitID, " +
+                            "TVisitor.VisitorID, " +
                             "TVisitor.Name, " +
                             "TCompany.CompName, " +
                             "TDoor.DoorName, " +
@@ -48,7 +49,7 @@ namespace VisitorManagement.Connection
                             "inner join TCompany on TVisiting.CompanyID = TCompany.CompanyID " +
                             "inner join TDoor on TVisiting.DoorID = TDoor.DoorID;";
 
-        public static string viewVisiting = "select VisitID as 'Visit ID', Name," +
+        public static string viewVisiting = "select VisitID as 'Visit ID', VisitorID as 'Visitor ID', Name," +
                 " CompName as 'Company Name'," +
                 " DoorName as 'Door'," +
                 " CardNumber as 'Card Number'," +

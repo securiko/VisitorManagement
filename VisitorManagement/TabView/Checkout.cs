@@ -60,7 +60,7 @@ namespace VisitorManagement.TabView
                 timeIn = dataGridView1.CurrentRow.Cells[7].Value + string.Empty;
                 string[] split = dateIn.Split(' ');
                 dateIn = split[0];
-                status = dataGridView1.CurrentRow.Cells[10].Value + string.Empty;
+                status = dataGridView1.CurrentRow.Cells[11].Value + string.Empty;
                 if (status == "Yes")
                 {
                     cmbStatus.SelectedIndex = 1;

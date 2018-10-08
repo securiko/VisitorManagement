@@ -121,7 +121,7 @@ namespace VisitorManagement.TabView
                     if (status.Equals("Yes"))
                     {
                         dateOut = DateTime.Now.ToString("yyyy-MM-dd");
-                        timeOut = DateTime.Now.ToString("HH:mm");
+                        timeOut = DateTime.Now.ToString("HH:mm:ss");
                         visit = new Visit(dateIn, timeIn, dateOut, timeOut);
                         visit.update();
                         update = false;

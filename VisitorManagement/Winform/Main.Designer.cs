@@ -38,8 +38,10 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.register1 = new VisitorManagement.TabView.Register();
+            this.label1 = new System.Windows.Forms.Label();
             this.checkout1 = new VisitorManagement.TabView.Checkout();
+            this.register1 = new VisitorManagement.TabView.Register();
+            this.report1 = new VisitorManagement.TabView.Report();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -99,9 +101,10 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(250, 60);
             this.button3.TabIndex = 2;
-            this.button3.Text = "                      History";
+            this.button3.Text = "                      Report";
             this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -140,6 +143,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
+            this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
@@ -149,6 +153,8 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Location = new System.Drawing.Point(69, 62);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(100, 100);
@@ -158,6 +164,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel4.Controls.Add(this.report1);
             this.panel4.Controls.Add(this.checkout1);
             this.panel4.Controls.Add(this.register1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -165,6 +172,26 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1003, 578);
             this.panel4.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(48, 179);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(136, 23);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Administrator";
+            // 
+            // checkout1
+            // 
+            this.checkout1.BackColor = System.Drawing.Color.SteelBlue;
+            this.checkout1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkout1.Location = new System.Drawing.Point(0, 0);
+            this.checkout1.Name = "checkout1";
+            this.checkout1.Size = new System.Drawing.Size(1003, 578);
+            this.checkout1.TabIndex = 1;
             // 
             // register1
             // 
@@ -175,14 +202,14 @@
             this.register1.Size = new System.Drawing.Size(1003, 578);
             this.register1.TabIndex = 0;
             // 
-            // checkout1
+            // report1
             // 
-            this.checkout1.BackColor = System.Drawing.Color.SteelBlue;
-            this.checkout1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkout1.Location = new System.Drawing.Point(0, 0);
-            this.checkout1.Name = "checkout1";
-            this.checkout1.Size = new System.Drawing.Size(1003, 578);
-            this.checkout1.TabIndex = 1;
+            this.report1.BackColor = System.Drawing.Color.SteelBlue;
+            this.report1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.report1.Location = new System.Drawing.Point(0, 0);
+            this.report1.Name = "report1";
+            this.report1.Size = new System.Drawing.Size(1003, 578);
+            this.report1.TabIndex = 2;
             // 
             // Main
             // 
@@ -197,6 +224,7 @@
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -216,6 +244,8 @@
         private System.Windows.Forms.Button logoutBtn;
         private TabView.Register register1;
         private TabView.Checkout checkout1;
+        private System.Windows.Forms.Label label1;
+        private TabView.Report report1;
     }
 }
 

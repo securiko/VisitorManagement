@@ -26,7 +26,7 @@ namespace VisitorManagement.TabView
         private void displayDGVToday()
         {
             string today = DateTime.Now.ToString("yyyy-MM-dd");
-            string query = QueryTable.viewVisiting + " where 'Date In' = '" + today + "'";
+            string query = QueryTable.viewVisiting + " where DateIn = '" + today + "'";
             connections.displayDB(query, "VisitID");
             dataGridView1.DataSource = connections.sql_d_set;
             dataGridView1.DataMember = "VisitID";
@@ -42,9 +42,9 @@ namespace VisitorManagement.TabView
 
         private void Checkout_Load(object sender, EventArgs e)
         {
-            connections = Connections.getInstance();
-            filterDate.SelectedIndex = 0;
-            displayDGVToday();
+            //connections = Connections.getInstance();
+            //filterDate.SelectedIndex = 0;
+            //displayDGVToday();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

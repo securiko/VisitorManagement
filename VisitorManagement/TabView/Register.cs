@@ -105,11 +105,11 @@ namespace VisitorManagement.TabView
 
         private void Register_Load(object sender, EventArgs e)
         {
-            connections = Connections.getInstance();
-            gender.SelectedIndex = 0;
-            comboBox2.SelectedIndex = 0;
-            fill_tree();
-            displayDGV();
+            //connections = Connections.getInstance();
+            //gender.SelectedIndex = 0;
+            //comboBox2.SelectedIndex = 0;
+            //fill_tree();
+            //displayDGV();
         }
 
         private void companyBtn_Click(object sender, EventArgs e)
@@ -175,7 +175,7 @@ namespace VisitorManagement.TabView
                 if (count == 0) MessageBox.Show("Please select room", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 else
                 {
-                    Visit visit = new Visit(textBox1.Text, companyID, tempDoorID, cardNo, dateIn, DateTime.Now.ToString("HH:mm"), "Yes");
+                    Visit visit = new Visit(textBox1.Text, companyID, tempDoorID, cardNo, dateIn, DateTime.Now.ToString("HH:mm:ss"), "Yes");
                     visit.insert();
                     clear();
                     MessageBox.Show("Visitor added", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -52,12 +52,12 @@ namespace VisitorManagement.TabView
             
             if (e.RowIndex >= 0)
             {
-                textBox1.Text = dataGridView1.CurrentRow.Cells[1].Value + string.Empty;
-                textBox2.Text = dataGridView1.CurrentRow.Cells[2].Value + string.Empty;
-                textBox3.Text = dataGridView1.CurrentRow.Cells[4].Value + string.Empty;
-                textBox4.Text = dataGridView1.CurrentRow.Cells[3].Value + string.Empty;
-                dateIn = dataGridView1.CurrentRow.Cells[5].Value + string.Empty;
-                timeIn = dataGridView1.CurrentRow.Cells[6].Value + string.Empty;
+                textBox1.Text = dataGridView1.CurrentRow.Cells[2].Value + string.Empty;
+                textBox2.Text = dataGridView1.CurrentRow.Cells[3].Value + string.Empty;
+                textBox3.Text = dataGridView1.CurrentRow.Cells[5].Value + string.Empty;
+                textBox4.Text = dataGridView1.CurrentRow.Cells[4].Value + string.Empty;
+                dateIn = dataGridView1.CurrentRow.Cells[6].Value + string.Empty;
+                timeIn = dataGridView1.CurrentRow.Cells[7].Value + string.Empty;
                 string[] split = dateIn.Split(' ');
                 dateIn = split[0];
                 status = dataGridView1.CurrentRow.Cells[10].Value + string.Empty;

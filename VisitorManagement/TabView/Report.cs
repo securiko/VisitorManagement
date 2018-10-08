@@ -11,6 +11,7 @@ using VisitorManagement.Connection;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Runtime.InteropServices;
 using System.Collections;
+using System.IO;
 
 namespace VisitorManagement.TabView
 {
@@ -22,131 +23,106 @@ namespace VisitorManagement.TabView
             InitializeComponent();
         }
 
-        private void displayVisitor(int choice)
+        private void displayVisitor(int index)
         {
+            string dateFrom = dateTimePicker1.Value.ToString("yyyy-MM-dd");
+            string dateTo = dateTimePicker2.Value.ToString("yyyy-MM-dd");
             string query = "";
-
-            switch (choice)
+            switch(index)
             {
                 case 1:
-                    query = "select VisitorID as 'Visitor ID', Name, Address from TVisitor";
-                    connections.displayDB(query, "VisitorID");
-                    dataGridView1.DataSource = connections.sql_d_set;
-                    dataGridView1.DataMember = "VisitorID";
-                    
+                    query = QueryTable.viewVisiting + "where DateIn between '" + dateFrom + "' and '" + dateTo + "' and CardNumber = '" + textBox1.Text + "'";
                     break;
                 case 2:
-                    query = "select EmployeeName as 'Door Name', CardNo as 'Card Number' from TEmployee where EmployeeName like '%Ruang%'";
-                    connections.displayDB(query, "CardNo");
-                    dataGridView1.DataSource = connections.sql_d_set;
-                    dataGridView1.DataMember = "CardNo";
+                    query = QueryTable.viewVisiting + "where DateIn between '" + dateFrom + "' and '" + dateTo + "' and Name = '" + textBox1.Text + "'";
+                    break;
+                case 3:
+                    query = QueryTable.viewVisiting + "where DateIn between '" + dateFrom + "' and '" + dateTo + "' and DoorName = '" + textBox1.Text + "'";
                     break;
                 default:
+                    query = QueryTable.viewVisiting + "where DateIn between '" + dateFrom + "' and '" + dateTo + "'";
                     break;
             }
 
-            DataGridViewCheckBoxColumn checkColumn = new DataGridViewCheckBoxColumn();
-            checkColumn.Name = "Select";
-            checkColumn.HeaderText = "";
-            checkColumn.Width = 50;
-            checkColumn.FalseValue = 0;
-            checkColumn.TrueValue = 1;
-            checkColumn.FillWeight = 10; //if the datagridview is resized (on form resize) the checkbox won't take up too much; value is relative to the other columns' fill values
-            dataGridView1.Columns.Insert(0, checkColumn);
+            connections.displayDB(query, "VisitorID");
+            dataGridView1.DataSource = connections.sql_d_set;
+            dataGridView1.DataMember = "VisitorID";
         }
 
         private void Report_Load(object sender, EventArgs e)
         {
             connections = Connections.getInstance();
-            displayVisitor(1);
-        }
-
-        private void btnVisitor_Click(object sender, EventArgs e)
-        {
-            dataGridView1.Columns.Clear();
-            dataGridView1.DataSource = null;
-            dataGridView1.Refresh();
-            displayVisitor(1);
-
-        }
-
-        private void btnCard_Click(object sender, EventArgs e)
-        {
-            dataGridView1.Columns.Clear();
-            dataGridView1.DataSource = null;
-            dataGridView1.Refresh();
-            displayVisitor(2);
+            comboBox1.SelectedIndex = 0;
         }
 
         
         private void btnExport_Click(object sender, EventArgs e)
         {
-            bool check = false;
-            int rw = 1, cl = 1;
-            string id = "";
-            string query = "";
-            string header = this.dataGridView1.Columns[2].HeaderText;
-            string dateFrom = dateTimePicker1.Value.ToString("yyyy-MM-dd");
-            string dateTo = dateTimePicker2.Value.ToString("yyyy-MM-dd");
-            string timeFrom = dateTimePicker3.Value.ToString("HH:mm");
-            Excel.Application xlApp = new Microsoft.Office.Interop.Excel.Application();
+            string path = Path.GetDirectoryName(Application.ExecutablePath);
+            string filePath = path + "\\Report.xlsx";
+            Excel._Application excel = new Microsoft.Office.Interop.Excel.Application();
+            Excel._Workbook workbook = excel.Workbooks.Add(Type.Missing);
+            Excel._Worksheet worksheet = null;
 
-            if (xlApp == null)
+            try
             {
-                MessageBox.Show("Excel is not properly installed!!");
-                return;
-            }
+                worksheet = workbook.ActiveSheet;
+                worksheet.Name = "Report";
 
-            Excel.Workbook xlWorkBook;
-            Excel.Worksheet xlWorkSheet;
-            object misValue = System.Reflection.Missing.Value;
+                int cellRowIndex = 1;
+                int cellColumnIndex = 1;
 
-            xlWorkBook = xlApp.Workbooks.Add(misValue);
-            xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                check = Convert.ToBoolean(dataGridView1.Rows[i].Cells[0].Value);
-
-                if (check)
+                for (int i = 0; i < dataGridView1.Rows.Count + 1; i++)
                 {
-                    if (header == "Name")
+                    for (int j = 0; j < dataGridView1.Columns.Count; j++)
                     {
-                        id = Convert.ToString(dataGridView1.Rows[i].Cells[1].Value);
-                        query = QueryTable.viewVisiting + " where VisitorID = '" + id + "' and DateIn between '" + dateFrom + "' and '" + dateTo + "'";
-                    }
-                    else if (header == "Card Number") {
-                        id = Convert.ToString(dataGridView1.Rows[i].Cells[2].Value);
-                        query = QueryTable.viewVisiting + "where CardNumber = '" + id + "' and DateIn between '" + dateFrom + "' and '" + dateTo + "'";
-                    }
-                    connections.displayDB(query, "VisitID");
-                    DataTable dt = connections.sql_d_set.Tables["VisitID"];
-                    foreach (DataRow row in dt.Rows)
-                    {
-                        foreach (DataColumn col in dt.Columns)
+                        // Excel index starts from 1,1. As first Row would have the Column headers, adding a condition check. 
+                        if (cellRowIndex == 1)
                         {
-                            xlWorkSheet.Cells[rw, cl] = row[col].ToString();
-                            cl++;
+                            worksheet.Cells[cellRowIndex, cellColumnIndex] = dataGridView1.Columns[j].HeaderText;
                         }
-                        rw++; cl = 1;   
+                        else
+                        {
+                            worksheet.Cells[cellRowIndex, cellColumnIndex] = dataGridView1.Rows[i-1].Cells[j].Value.ToString();
+                        }
+                        cellColumnIndex++;
                     }
+                    cellColumnIndex = 1;
+                    cellRowIndex++;
                 }
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "Excel files(*.xlsx) | *.xlsx | All files(*.*) | *.* ";
+                saveFileDialog.FilterIndex = 2;
+
+                if(saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    workbook.SaveAs(saveFileDialog.FileName);
+                    MessageBox.Show("Export Successful");
+                }
+            }catch(Exception ex) { MessageBox.Show(ex.Message); }
+            finally
+            {
+                excel.Quit();
+                workbook = null;
+                excel = null;
             }
-
-            xlWorkBook.SaveAs("d:\\csharp-Excel.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-            xlWorkBook.Close(true, misValue, misValue);
-            xlApp.Quit();
-
-            Marshal.ReleaseComObject(xlWorkSheet);
-            Marshal.ReleaseComObject(xlWorkBook);
-            Marshal.ReleaseComObject(xlApp);
-
-            MessageBox.Show("Excel file created , you can find the file d:\\csharp-Excel.xls");
-
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             //MessageBox.Show(e.RowIndex.ToString() + " and " + e.ColumnIndex.ToString());
         }
+
+        private void btnQuery_Click(object sender, EventArgs e)
+        {
+            displayVisitor(comboBox1.SelectedIndex);
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedIndex == 0) textBox1.Enabled = false;
+            else textBox1.Enabled = true;
+        }
+
     }
 }

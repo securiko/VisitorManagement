@@ -51,8 +51,8 @@ namespace VisitorManagement.TabView
 
         private void Report_Load(object sender, EventArgs e)
         {
-            connections = Connections.getInstance();
-            comboBox1.SelectedIndex = 0;
+            //connections = Connections.getInstance();
+            //comboBox1.SelectedIndex = 0;
         }
 
         

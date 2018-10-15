@@ -20,6 +20,9 @@ namespace VisitorManagement.Connection
         private string serverName, dbName, authUsr, authPwd;
         private static Connections connection = new Connections();
 
+        /**
+        * Constructor singleton hanya dapat di instance 1 kali 
+        */
         private Connections() { }
         public static Connections getInstance() {
             return connection;
@@ -33,7 +36,7 @@ namespace VisitorManagement.Connection
             this.serverName = serverName;
         }
 
-        // Fungsi untuk membuka koneksi sql
+        // method untuk membuka koneksi sql
         public void opensql()
         {
             string sqlString;
@@ -53,8 +56,11 @@ namespace VisitorManagement.Connection
             }
         }
 
-        // fungsi untuk melakukan insert dan update
-        public void insertSQL(string query)  // C
+        /* 
+        *   method untuk melakukan insert dan update
+        *   @param[query] parameter string yang dapat di isi dengan query insert atau update
+        */
+        public void insertSQL(string query) 
         {
             try
             {
@@ -66,8 +72,12 @@ namespace VisitorManagement.Connection
             finally { sqlCon.Close(); }
         }
 
-        // fungsi untuk menampilkan data ke datagridview
-        public void displayDB(string query, string tableView)  //R
+        /*
+        *   method ini digunakan untuk menampilkan query database ke datagridview
+        *   @param[query] parameter string yang dapat di isi dengan query select
+        *   @param[tableView] parameter string yang dapat di isi dengan kolom table database yang akan di mapping
+        */
+        public void displayDB(string query, string tableView)  
         {
             try
             {
@@ -80,7 +90,7 @@ namespace VisitorManagement.Connection
             finally { sqlCon.Close(); }
         }
 
-        // fungsi untuk melakukan filter pada database
+        // method untuk melakukan filter pada database
         public void filterDB(string query)
         {
             try
@@ -94,7 +104,12 @@ namespace VisitorManagement.Connection
             finally { sqlCon.Close(); }
         }
 
-        // fungsi untuk get data ke database
+        /*
+         *  function yang digunakan untuk menarik sebuah data tertentu pada database
+         *  @param[query] parameter string yang dapat di isi dengan query select
+         *  @param[GetColumnDB] parameter string yang di isi dengan spesifik tabel yang akan ditarik datanya
+         *  @return method ini akan mengembalikan nilai dari sebuah kolom tertentu
+         */
         public string getDataFromDB(string query, string GetColumnDB)
         {
             string tempStr = "";

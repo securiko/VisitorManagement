@@ -42,9 +42,9 @@ namespace VisitorManagement.TabView
 
         private void Checkout_Load(object sender, EventArgs e)
         {
-            //connections = Connections.getInstance();
-            //filterDate.SelectedIndex = 0;
-            //displayDGVToday();
+            connections = Connections.getInstance();
+            filterDate.SelectedIndex = 0;
+            displayDGVToday();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

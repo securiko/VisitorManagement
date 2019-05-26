@@ -36,6 +36,7 @@ namespace VisitorManagement.TabView
             UncheckedAllRoom();
         }
 
+        // fungsi yang digunakan untuk menampilkan list pintu yang terdaftar pada akses control
         private void fill_tree()
         {
             string query = "select DoorID, DoorName from TDoor";
@@ -69,6 +70,7 @@ namespace VisitorManagement.TabView
             }
         }
 
+        // fungsi yang digunakan untuk menampilkan list visitor sekarang
         private void displayDGV()
         {
             string today = DateTime.Now.ToString("yyyy-MM-dd");
@@ -78,6 +80,7 @@ namespace VisitorManagement.TabView
             dataGridView1.DataMember = "VisitID";
         }
 
+        // fungsi untuk mencari visitor yang terdaftar pada hari sekarang
         private void search(string text, int index)
         {
             string today = DateTime.Now.ToString("yyyy-MM-dd");
@@ -123,6 +126,9 @@ namespace VisitorManagement.TabView
             insertVisitor();
         }
 
+        /* digunakan untuk memeriksa ID visitor yang telah terdaftar
+         * jika ID visitor yang di input telah terdaftar maka akan melakukan auto fill pada textbox
+         */
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             string query = "select * from TVisitor where VisitorID = '" + textBox1.Text + "'";
@@ -141,6 +147,7 @@ namespace VisitorManagement.TabView
             }
         }
 
+        // fungsi insert visitor
         private void insertVisitor()
         {
             if (MessageBox.Show("Are you sure want to save this?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)

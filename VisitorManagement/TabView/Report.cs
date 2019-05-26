@@ -23,6 +23,9 @@ namespace VisitorManagement.TabView
             InitializeComponent();
         }
 
+        /* filter report visitor
+         * filter dapat dilakukan by tanggal dan (nama / card number / door name )
+         */
         private void displayVisitor(int index)
         {
             string dateFrom = dateTimePicker1.Value.ToString("yyyy-MM-dd");
@@ -55,7 +58,7 @@ namespace VisitorManagement.TabView
             comboBox1.SelectedIndex = 0;
         }
 
-        
+        // event click listener yang digunakan untuk export dari datagridview ke microsoft excel
         private void btnExport_Click(object sender, EventArgs e)
         {
             string path = Path.GetDirectoryName(Application.ExecutablePath);

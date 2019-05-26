@@ -47,6 +47,7 @@ namespace VisitorManagement.TabView
             displayDGVToday();
         }
 
+        // event ketika cell pada datagridview di click, data akan di binding ke textbox
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             
@@ -110,6 +111,7 @@ namespace VisitorManagement.TabView
             }
         }
 
+        // levent click listener untuk checkout visitor
         private void updateBtn_Click(object sender, EventArgs e)
         {
             string timeOut = "";

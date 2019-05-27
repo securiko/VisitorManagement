@@ -59,5 +59,14 @@ namespace VisitorManagement.Connection
                 " DateOut as 'Date Out'," +
                 " TimeOut as 'Out Time'," +
                 " CheckoutStatus as 'Check out Status' from Vvisiting ";
+
+        public static string roomView = "select TControl.Type, TDoor.DoorID, TDoor.DoorName " +
+            "from TDoor " +
+            "inner join TControl on TControl.ControlID = TDoor.ControlID " +
+            "except " +
+            "select TControl.Type, TDoor.DoorID, TDoor.DoorName " +
+            "from TDoor " +
+            "inner join TControl on TControl.ControlID = TDoor.ControlID " +
+            "where TControl.Type = 5";
     }
 }

@@ -55,7 +55,7 @@ namespace VisitorManagement.TabView
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }            
+            }
         }
 
         private void UncheckedAllRoom()
